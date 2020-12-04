@@ -15,9 +15,6 @@ const passwordMatcher2 = rule => {
   return false
 }
 
-const verifyPasswords1 = rules => rules.filter(passwordMatcher1).length
-const verifyPasswords2 = rules => rules.filter(passwordMatcher2).length
-
 const parseData = data => {
   const splitted = data.split('\n').map(line => line.split(' '))
   
@@ -30,6 +27,9 @@ const parseData = data => {
 
   return array
 }
+
+const verifyPasswords1 = rules => rules.filter(passwordMatcher1).length
+const verifyPasswords2 = rules => rules.filter(passwordMatcher2).length
 
 const launchPart1 = filename => launch.call(__dirname + filename, parseData, verifyPasswords1)
 const launchPart2 = filename => launch.call(__dirname + filename, parseData, verifyPasswords2)
