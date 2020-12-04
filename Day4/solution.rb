@@ -23,10 +23,12 @@ class Passport
     table.length
   end
 
+  # Check if all required keys are present
   def valid_keys?(passport)
     (REQ - passport.keys).length === 0
   end
 
+  # Check if year is valid and between min and max
   def valid_year?(y, min, max)
     return false unless y
     return false if y.length != 4
@@ -35,6 +37,7 @@ class Passport
     year >= min && year <= max 
   end
 
+  # Check if height has a correct unit and is between min and max according to this unit
   def valid_height?(h)
     unit  = h.chars.last(2).join('')
     value = h.chars.first(3).join('').to_i
@@ -48,6 +51,7 @@ class Passport
     end
   end
 
+  # Check if color is a valid #hex
   def valid_color?(col)
     return false unless col[0] == '#'
 
@@ -58,10 +62,12 @@ class Passport
     valid
   end
 
+  # Check if eye color is part of accepted eye colors
   def valid_eye?(eye)
     ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].include?(eye)
   end
 
+  # Check if PID as the correct length
   def valid_pid?(pid)
     pid.length == 9
   end
@@ -89,4 +95,4 @@ class Passport
   end
 end
 
-Passport.new.call('input.txt')
+Passport.new.call('data/input.txt', true)

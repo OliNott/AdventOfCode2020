@@ -37,5 +37,5 @@ const launchPart2 = filename => launch.call(__dirname + filename, parseData, ver
 module.exports.part1 = launchPart1
 module.exports.part2 = launchPart2
 
-console.log(launchPart1('/input.txt'))
-console.log(launchPart2('/input.txt'))
+console.log(launchPart1('/data/input.txt'))
+console.log(launchPart2('/data/input.txt'))

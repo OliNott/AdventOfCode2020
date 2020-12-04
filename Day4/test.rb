@@ -1,3 +1,5 @@
+# ruby Day4/test.rb 
+
 require 'rspec/autorun'
 require_relative './solution'
 
@@ -35,7 +37,7 @@ describe Passport do
 
     describe "Part 1 overall test" do
       it "Should pass part1 test file" do
-        valids = validator.call('test1.txt', false)
+        valids = validator.call('data/test1.txt', false)
         expect(valids).to eq(2)
       end
     end
@@ -107,7 +109,7 @@ describe Passport do
 
     describe "Part 2 overall test" do
       it "Should pass the part2 test file" do
-        valids = validator.call('test2.txt', false)
+        valids = validator.call('data/test2.txt', false)
         expect(valids).to eq(4)
       end
     end

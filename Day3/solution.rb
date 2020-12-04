@@ -12,7 +12,7 @@ def count_trees(matrix, step_x, step_y)
 end
 
 def call(x, y)
-  input = get_file_data(__dir__ + '/input.txt')
+  input = get_file_data(__dir__ + 'data/input.txt')
   count_trees(input, x, y)
 end
 

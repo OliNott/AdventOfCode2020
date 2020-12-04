@@ -4,12 +4,12 @@ const day1      = require('./solution')
 
 describe('Day 1 / Part 1', () => {
   it('should return 514579 when testing the test file', () => {
-    assert.equal(day1.part1('/test.txt'), 514579);
+    assert.equal(day1.part1('/data/test.txt'), 514579);
   })
 })
 
 describe('Day 1 / Part 2', () => {
   it('should return 241861950 when testing the test file', () => {
-    assert.equal(day1.part2('/test.txt'), 241861950);
+    assert.equal(day1.part2('/data/test.txt'), 241861950);
   })
 })
