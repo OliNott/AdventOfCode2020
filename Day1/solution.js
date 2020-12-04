@@ -1,35 +1,47 @@
 
 const launch = require('../tools')
 
-// Part 1
-const find2020Part1 = numbers => {  
-  numbers.forEach(num1 => {
-    const matchingNum = numbers.filter(num2 => num1 + num2 === 2020)[0]
-    if (matchingNum) result = num1 * matchingNum
+
+const matchingNum = (currentNumbers, array, goal) => {
+  let currentTry
+
+  const match = array.find(number => {
+    currentTry = [...currentNumbers, number]
+    return currentTry.reduce((total, num) => total + num, 0) === goal
   })
   
-  return result
+  return match ? currentTry : null
+}
+
+// Part 1
+const find2020Part1 = numbers => {  
+  let result = []
+  numbers.some(num1 => result = matchingNum([num1], numbers, 2020))
+
+  return result.reduce((total, num) => total * num, 1)
 }
 
 // Part 2
 const find2020Part2 = numbers => {
-  numbers.forEach(num1 => {
-    numbers.forEach(num2 => {
-      const matchingNum = numbers.filter(num3 => num1 + num2 + num3 === 2020)[0]
-      if (matchingNum) result = num1 * num2 * matchingNum
-    })
-  })
-  
-  return result
+  let result = []
+  numbers.some(num1 => numbers.some(num2 => result = matchingNum([num1, num2], numbers, 2020)))
+
+  return result.reduce((total, num) => total * num, 1)
 }
+
+// With deepness of 5 to test
+// const find2020Part3 = numbers => {
+//   let result = []
+//   numbers.some(num1 => numbers.some(num2 => numbers.some(num3 => numbers.some(num4 => result = matchingNum([num1, num2, num3, num4], numbers, 2020)))))
+
+//   return result.reduce((total, num) => total * num, 1)
+// }
 
 const parseData = data => data.split('\n').map(n => parseInt(n, 10))
 
-const launchPart1 = filename => launch.call(__dirname + filename, parseData, find2020Part1)
-const launchPart2 = filename => launch.call(__dirname + filename, parseData, find2020Part2)
+module.exports.part1 = filename => launch.call(__dirname + filename, parseData, find2020Part1)
+module.exports.part2 = filename => launch.call(__dirname + filename, parseData, find2020Part2)
 
-module.exports.part1 = launchPart1
-module.exports.part2 = launchPart2
-
-console.log(launchPart1('/data/input.txt'))
-console.log(launchPart2('/data/input.txt'))
+console.log(launch.call(__dirname + '/data/input.txt', parseData, find2020Part1))
+console.log(launch.call(__dirname + '/data/input.txt', parseData, find2020Part2))
+console.log(launch.call(__dirname + '/data/input.txt', parseData, find2020Part3))
