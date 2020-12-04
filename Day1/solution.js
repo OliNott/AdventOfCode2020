@@ -32,3 +32,6 @@ const launchPart2 = filename => launch.call(__dirname + '/' + filename, parseDat
 
 module.exports.part1 = launchPart1
 module.exports.part2 = launchPart2
+
+console.log(launchPart1('/input.txt'))
+console.log(launchPart2('/input.txt'))
