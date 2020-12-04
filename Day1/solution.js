@@ -27,8 +27,8 @@ const find2020_Part2 = numbers => {
 
 const parseData = data => data.split('\n').map(n => parseInt(n, 10))
 
-const launchPart1 = filename => launch.call(__dirname + '/' + filename, parseData, find2020_Part1)
-const launchPart2 = filename => launch.call(__dirname + '/' + filename, parseData, find2020_Part2)
+const launchPart1 = filename => launch.call(__dirname + filename, parseData, find2020_Part1)
+const launchPart2 = filename => launch.call(__dirname + filename, parseData, find2020_Part2)
 
 module.exports.part1 = launchPart1
 module.exports.part2 = launchPart2

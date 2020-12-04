@@ -1,4 +1,4 @@
-// mocha Day1
+// mocha Day2
 const assert    = require('assert')
 const day1      = require('./solution')
 

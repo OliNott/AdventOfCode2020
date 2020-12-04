@@ -22,10 +22,10 @@ const parseData = data => {
   const splitted = data.split('\n').map(line => line.split(' '))
   
   const array = splitted.map(line => ({
-    rule1: parseInt(line[0].split('-')[0], 10),
-    rule2: parseInt(line[0].split('-')[1], 10),
-    letter:    line[1][0],
-    password:  line[2]
+    rule1:    parseInt(line[0].split('-')[0], 10),
+    rule2:    parseInt(line[0].split('-')[1], 10),
+    letter:   line[1][0],
+    password: line[2]
   }))
 
   return array
@@ -37,5 +37,5 @@ const launchPart2 = filename => launch.call(__dirname + filename, parseData, ver
 module.exports.part1 = launchPart1
 module.exports.part2 = launchPart2
 
-// console.log(launchPart1('/input.txt'))
-// console.log(launchPart2('/input.txt'))
+console.log(launchPart1('/input.txt'))
+console.log(launchPart2('/input.txt'))
