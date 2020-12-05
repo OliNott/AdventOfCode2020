@@ -1,4 +1,4 @@
-const launch = require('../tools')
+const engine = require('../tools')
 
 // Rule 1 and 2 are the min/max number of occurencies of letter in password
 const passwordMatcher1 = rule => {
@@ -31,8 +31,8 @@ const parseData = data => {
 const verifyPasswords1 = rules => rules.filter(passwordMatcher1).length
 const verifyPasswords2 = rules => rules.filter(passwordMatcher2).length
 
-const launchPart1 = filename => launch.call(__dirname + filename, parseData, verifyPasswords1)
-const launchPart2 = filename => launch.call(__dirname + filename, parseData, verifyPasswords2)
+const launchPart1 = filename => engine.launch(__dirname + filename, parseData, verifyPasswords1)
+const launchPart2 = filename => engine.launch(__dirname + filename, parseData, verifyPasswords2)
 
 module.exports.part1 = launchPart1
 module.exports.part2 = launchPart2

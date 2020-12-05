@@ -1,17 +1,15 @@
 
-const launch = require('../tools')
+const engine = require('../tools')
 
+// TODO : Use Currying
+// const myFunc = (arg1) => (arg2) => (arg3) => arg1 * arg2 * arg3
 
-const matchingNum = (currentNumbers, array, goal) => {
-  let currentTry
+// Recursive currying
+// const curry = (fn, arity = fn.length, ...args) =>
+//   arity <= args.length ? fn(...args) : curry.bind(null, fn, arity, ...args);
 
-  const match = array.find(number => {
-    currentTry = [...currentNumbers, number]
-    return currentTry.reduce((total, num) => total + num, 0) === goal
-  })
-  
-  return match ? currentTry : null
-}
+// console.log(curry(Math.pow)(2)(8));
+// console.log(curry(Math.min, 3)(10)(50)(2));
 
 // Part 1
 const find2020Part1 = numbers => {  
@@ -29,19 +27,21 @@ const find2020Part2 = numbers => {
   return result.reduce((total, num) => total * num, 1)
 }
 
-// With deepness of 5 to test
-// const find2020Part3 = numbers => {
-//   let result = []
-//   numbers.some(num1 => numbers.some(num2 => numbers.some(num3 => numbers.some(num4 => result = matchingNum([num1, num2, num3, num4], numbers, 2020)))))
+const matchingNum = (currentNumbers, array, goal) => {
+  let currentTry
 
-//   return result.reduce((total, num) => total * num, 1)
-// }
+  const match = array.find(number => {
+    currentTry = [...currentNumbers, number]
+    return currentTry.reduce((total, num) => total + num, 0) === goal
+  })
+  
+  return match ? currentTry : null
+}
 
 const parseData = data => data.split('\n').map(n => parseInt(n, 10))
 
-module.exports.part1 = filename => launch.call(__dirname + filename, parseData, find2020Part1)
-module.exports.part2 = filename => launch.call(__dirname + filename, parseData, find2020Part2)
+module.exports.part1 = filename => engine.launch(__dirname + filename, parseData, find2020Part1)
+module.exports.part2 = filename => engine.launch(__dirname + filename, parseData, find2020Part2)
 
-console.log(launch.call(__dirname + '/data/input.txt', parseData, find2020Part1))
-console.log(launch.call(__dirname + '/data/input.txt', parseData, find2020Part2))
-console.log(launch.call(__dirname + '/data/input.txt', parseData, find2020Part3))
+console.log(engine.launch(__dirname + '/data/input.txt', parseData, find2020Part1))
+console.log(engine.launch(__dirname + '/data/input.txt', parseData, find2020Part2))
