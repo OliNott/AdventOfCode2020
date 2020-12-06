@@ -59,5 +59,5 @@ module.exports.part2     = filename => engine.launch(__dirname + filename, parse
 module.exports.parseData = parseData
 module.exports.findSeats = findSeats
 
-console.log(engine.launch(__dirname + '/data/input.txt', parseData, findHigherId))
-console.log(engine.launch(__dirname + '/data/input.txt', parseData, findMissingId))
+console.log(engine.launch(__dirname + '/data/input.txt', parseData, findHigherId))  // 835
+console.log(engine.launch(__dirname + '/data/input.txt', parseData, findMissingId)) // 649
