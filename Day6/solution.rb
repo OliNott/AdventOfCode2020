@@ -9,12 +9,10 @@ class Survey
     p "Number of same replies : #{check_identic_replies}"     
   end
 
-  def count_replies(custom_data = nil, result = 0)
+  def count_replies(custom_data = nil)
     data = custom_data ? custom_data : @data # For custom test
 
-    data.each { |line| result += line.flatten.uniq.length }
-
-    return result
+    data.map { |line| line.flatten.uniq.length }.reduce(&:+)
   end
 
   def check_identic_replies(custom_data = nil, result = 0)
@@ -22,8 +20,8 @@ class Survey
 
     data.each do |survey|
       counter = {}
-      survey.each do |participant| 
-        participant.each { |letter| counter.has_key?(letter) ? counter[letter] += 1 : counter[letter] = 1 }
+      survey.each do |participant|
+        participant.each { |question| counter.has_key?(question) ? counter[question] += 1 : counter[question] = 1 }
         result += counter.select { |letter| counter[letter] === survey.length }.length
       end
     end
